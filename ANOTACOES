@@ -6,9 +6,30 @@ Desvantagens:
 
 
 Comandos:
-- DDL
-- DML
-- DCL
-- 
-- 
+- DDL: definição.
+- DML: manipulação. incluir/alterar.
+- DCL: controle de dados.
+
+MYSQL:
+
+Caracteristicas:
+- Servidor
+- portabilidade
+- multithreades
+- formas de armazenamento
+- velocidade
+- desempenho
+- aplicabilidad
+- Logs
+
+
+_________________________________
+
+
+Conteudo de tabelas:
+
+-> Gerar o esquema visual:
+database > reverse enginer >  next > next >  select base > next  > execute
+
+
 
