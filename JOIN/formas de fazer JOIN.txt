@@ -1,0 +1,13 @@
+-- quantidade de notas fiscais por vendedor
+SELECT A.MATRICULA, A.NOME, COUNT(*) FROM
+tabela_de_vendedores AS  A 
+INNER JOIN notas_fiscais B
+ON A.MATRICULA =  B.MATRICULA
+GROUP BY A.MATRICULA, A.NOME;
+
+-- outra forma de fazer o JOIN
+SELECT A.MATRICULA, A.NOME, COUNT(*) FROM
+tabela_de_vendedores AS  A ,notas_fiscais B
+WHERE A.MATRICULA =  B.MATRICULA
+GROUP BY A.MATRICULA, A.NOME;
+-- é como se fosse feito um cross join e depois um where

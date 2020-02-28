@@ -32,4 +32,25 @@ Conteudo de tabelas:
 database > reverse enginer >  next > next >  select base > next  > execute
 
 
+___________________________________________________________________________
 
+
+
+
+JOIN: possibilita unir uma ou mais tabelas atraves de campos em comum.
+
+INNER JOIN:  Retorna somente quando temos chaves correspondentes.
+
+LEFT JOIN: (LEFT-ESQUERDA (QUE VEM ANTES))
+->Retorna todos os da esquerda e os correspondentes da direita.
+
+RIRHT JOIN: (RIRHT-DIREITA (QUE VEM DEPOIS))
+->Retorna todos os da DIREITA e os correspondentes da esquerda.
+
+FULL JOIN - Retorna todos os registros de todas as tabelas
+
+CROSS JOIN: retorns o produto cartesiano das duas tabelas.
+*produto cartesiano
+- quando seleciona tabelas sem dizer a relação é feito o produto cartesiano.
+
+-- anotação

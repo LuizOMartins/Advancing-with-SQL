@@ -70,22 +70,70 @@ SELECT ESTADO, sum(LIMITE_DE_CREDITO) AS SOMA_LIMITE FROM tabela_de_clientes
  GROUP BY ESTADO having SUM(LIMITE_DE_CREDITO) > 900000;
 
 
+-- Classificar resultados
+-- CASE:  teste em um ou mais campos.
+
+SELECT * FROM tabela_de_produtos;
+
+SELECT NOME_DO_PRODUTO, PRECO_DE_LISTA,
+	CASE WHEN PRECO_DE_LISTA >=12 THEN 'PRODUTO CARO'
+	WHEN PRECO_DE_LISTA >=7 AND PRECO_DE_LISTA < 12 THEN 'PRODUTO EM CONTA'
+	ELSE 'PRODUTO BARATO' 
+END AS STATUS_PRECO from tabela_de_produtos;
+
+SELECT EMBALAGEM,	
+	CASE WHEN PRECO_DE_LISTA >=12 THEN 'PRODUTO CARO'
+	WHEN PRECO_DE_LISTA >=7 AND PRECO_DE_LISTA < 12 THEN 'PRODUTO EM CONTA'
+	ELSE 'PRODUTO BARATO' 
+END AS STATUS_PRECO, AVG(PRECO_DE_LISTA) AS  PRECO_MEDIO
+from tabela_de_produtos
+GROUP BY EMBALAGEM,
+	CASE WHEN PRECO_DE_LISTA >=12 THEN 'PRODUTO CARO'
+	WHEN PRECO_DE_LISTA >=7 AND PRECO_DE_LISTA < 12 THEN 'PRODUTO EM CONTA'
+	ELSE 'PRODUTO BARATO'
+END;
 
 
+-- JOIN
+
+SELECT * FROM TABELA_DE_VENDEDORES;
+SELECT * FROM notas_fiscais;
+-- CAMPO EM COMUM: MATRICULA 
+
+SELECT * FROM tabela_de_vendedores AS  A 
+INNER JOIN notas_fiscais B
+ON A.MATRICULA =  B.MATRICULA;
+
+-- quantidade de notas fiscais por vendedor
+SELECT A.MATRICULA, A.NOME, COUNT(*) FROM
+tabela_de_vendedores AS  A 
+INNER JOIN notas_fiscais B
+ON A.MATRICULA =  B.MATRICULA
+GROUP BY A.MATRICULA, A.NOME;
+
+-- outra forma de fazer o JOIN
+SELECT A.MATRICULA, A.NOME, COUNT(*) FROM
+tabela_de_vendedores AS  A ,notas_fiscais B
+WHERE A.MATRICULA =  B.MATRICULA
+GROUP BY A.MATRICULA, A.NOME;
+-- é como se fosse feito um cross join e depois um where
 
 
+SELECT COUNT(*) FROM tabela_de_clientes;
 
-
-
-
+SELECT CPF, count(*) FROM notas_fiscais group by cpf;
  
+ SELECT distinct A.CPF, A.NOME, B.CPF FROM tabela_de_clientes A
+ INNER JOIN notas_fiscais B ON A.cpf = B.cpf;
 
 
-
-
+ SELECT distinct A.CPF, A.NOME, B.CPF FROM tabela_de_clientes A
+ LEFT JOIN notas_fiscais B ON A.cpf = B.cpf;
  
-
-
-
-
+  SELECT distinct A.CPF, A.NOME, B.CPF FROM tabela_de_clientes A
+ LEFT JOIN notas_fiscais B ON A.cpf = B.cpf
+ WHERE B.cpf is null;
+ 
+ 
+ 
 
