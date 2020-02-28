@@ -134,6 +134,47 @@ SELECT CPF, count(*) FROM notas_fiscais group by cpf;
  LEFT JOIN notas_fiscais B ON A.cpf = B.cpf
  WHERE B.cpf is null;
  
+ --
  
+ 
+ SELECT * from tabela_de_vendedores 
+ inner join tabela_de_clientes 
+ on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO; 
+
+
+ SELECT tabela_de_vendedores.BAIRRO,
+ tabela_de_vendedores.NOME,
+ DE_FERIAS, -- nao precisa especificar o campo quando so tem em uma tabela
+ tabela_de_clientes.BAIRRO,
+ tabela_de_clientes.NOME
+ from tabela_de_vendedores 
+ inner join tabela_de_clientes 
+ on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO; 
  
 
+ SELECT tabela_de_vendedores.BAIRRO,
+ tabela_de_vendedores.NOME,
+ DE_FERIAS, -- nao precisa especificar o campo quando so tem em uma tabela
+ tabela_de_clientes.BAIRRO,
+ tabela_de_clientes.NOME
+ from tabela_de_vendedores 
+ right join tabela_de_clientes 
+ on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO; 
+ 
+ -- relação de join
+ /*
+  from tabela_de_vendedores 
+ right join tabela_de_clientes 
+ */
+ 
+ 
+ -- ERRO:  para funcionar é necessário realizar duas consultas ( left e right join)
+SELECT tabela_de_vendedores.BAIRRO,
+ tabela_de_vendedores.NOME,
+ DE_FERIAS, -- nao precisa especificar o campo quando so tem em uma tabela
+ tabela_de_clientes.BAIRRO,
+ tabela_de_clientes.NOME
+ from tabela_de_vendedores 
+ full join tabela_de_clientes 
+ on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO;
+ 
