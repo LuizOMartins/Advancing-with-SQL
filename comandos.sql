@@ -178,3 +178,50 @@ SELECT tabela_de_vendedores.BAIRRO,
  full join tabela_de_clientes 
  on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO;
  
+ 
+ --  UNION
+ 
+ SELECT DISTINCT BAIRRO FROM tabela_de_clientes
+UNION
+ SELECT DISTINCT BAIRRO FROM tabela_de_vendedores; 
+ 
+ 
+ 
+SELECT DISTINCT BAIRRO, nome, 'CLIENTE' AS TIPO FROM tabela_de_clientes
+UNION ALL
+SELECT DISTINCT BAIRRO, NOME, 'VENDEDOR' AS TIPO FROM tabela_de_vendedores; 
+
+
+-- FULL JOIN LEFT E RIGHT AO MESMO TEMPO
+
+ SELECT tabela_de_vendedores.BAIRRO,
+ tabela_de_vendedores.NOME,
+ DE_FERIAS, -- nao precisa especificar o campo quando so tem em uma tabela
+ tabela_de_clientes.BAIRRO,
+ tabela_de_clientes.NOME
+ from tabela_de_vendedores 
+ right join tabela_de_clientes 
+ on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO
+UNION
+SELECT tabela_de_vendedores.BAIRRO,
+ tabela_de_vendedores.NOME,
+ DE_FERIAS, -- nao precisa especificar o campo quando so tem em uma tabela
+ tabela_de_clientes.BAIRRO,
+ tabela_de_clientes.NOME
+ from tabela_de_vendedores 
+ left join tabela_de_clientes 
+ on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO; 
+
+-- SUB CONSUNTAS
+ 
+SELECT DISTINCT BAIRRO FROM tabela_de_vendedores;
+
+ SELECT DISTINCT BAIRRO FROM tabela_de_clientes 
+ WHERE BAIRRON IN ('tijuca','Jartins');
+ 
+
+ SELECT * FROM tabela_de_clientes 
+ WHERE BAIRRO IN (  SELECT DISTINCT BAIRRO FROM tabela_de_vendedores ); 
+ 
+ 
+ 

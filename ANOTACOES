@@ -54,3 +54,17 @@ CROSS JOIN: retorns o produto cartesiano das duas tabelas.
 - quando seleciona tabelas sem dizer a relação é feito o produto cartesiano.
 
 -- anotação
+
+
+
+UNION: faz a união de duas ou mais consultas.
+- mesmo numero e tipo de campos
+- junta e faz o distinct
+- UNION ALL: sem distinct.
+O FULL JOIN:  pode ser simulado com left e RIRHT e com o UNION no meio.
+
+
+Sub-consultas: Podemos usar uma consulta dentro de uma consulta.
+
+
+View: é uma tabela logica, resultado de uma consulta.
